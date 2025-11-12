@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickRecharge - Mobile, WiFi & TV Recharge</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>⚡ QuickRecharge</h1>
+            <p>Fast & Secure Online Recharge System</p>
+        </header>
+
+        <div class="main-content">
+            <div class="service-tabs">
+                <div class="tab active" onclick="switchTab('mobile')">
+                    <div class="tab-icon">📱</div>
+                    <div>Mobile</div>
+                </div>
+                <div class="tab" onclick="switchTab('wifi')">
+                    <div class="tab-icon">📡</div>
+                    <div>WiFi/Broadband</div>
+                </div>
+                <div class="tab" onclick="switchTab('tv')">
+                    <div class="tab-icon">📺</div>
+                    <div>TV/Cable</div>
+                </div>
+            </div>
+
+            <div class="content-area">
+                <div id="mobile" class="form-section active">
+                    <h2>Mobile Recharge</h2>
+                    
+                    <div class="form-group">
+                        <label>Mobile Number</label>
+                        <input type="tel" id="mobileNumber" placeholder="Enter 10 digit mobile number" maxlength="10">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Select Operator</label>
+                        <select id="mobileOperator">
+                            <option value="">Choose operator</option>
+                            <option value="Airtel">Airtel</option>
+                            <option value="Jio">Jio</option>
+                            <option value="VI">VI (Vodafone Idea)</option>
+                            <option value="BSNL">BSNL</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Select Plan</label>
+                        <div class="plans-grid" id="mobilePlans"></div>
+                    </div>
+                </div>
+
+                <div id="wifi" class="form-section">
+                    <h2>WiFi/Broadband Recharge</h2>
+                    
+                    <div class="form-group">
+                        <label>Customer ID / Account Number</label>
+                        <input type="text" id="wifiAccount" placeholder="Enter your account number">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Select Provider</label>
+                        <select id="wifiProvider">
+                            <option value="">Choose provider</option>
+                            <option value="Airtel Xstream">Airtel Xstream</option>
+                            <option value="Jio Fiber">Jio Fiber</option>
+                            <option value="ACT Fibernet">ACT Fibernet</option>
+                            <option value="BSNL Fiber">BSNL Fiber</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Select Plan</label>
+                        <div class="plans-grid" id="wifiPlans"></div>
+                    </div>
+                </div>
+
+                <div id="tv" class="form-section">
+                    <h2>TV/Cable Recharge</h2>
+                    
+                    <div class="form-group">
+                        <label>Subscriber ID / Customer ID</label>
+                        <input type="text" id="tvAccount" placeholder="Enter your subscriber ID">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Select Provider</label>
+                        <select id="tvProvider">
+                            <option value="">Choose provider</option>
+                            <option value="Tata Play">Tata Play</option>
+                            <option value="Airtel Digital TV">Airtel Digital TV</option>
+                            <option value="Dish TV">Dish TV</option>
+                            <option value="Sun Direct">Sun Direct</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Select Plan</label>
+                        <div class="plans-grid" id="tvPlans"></div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Payment Method</label>
+                    <div class="payment-methods">
+                        <div class="payment-method" onclick="selectPayment('card')">
+                            <div class="payment-icon">💳</div>
+                            <div>Credit/Debit Card</div>
+                        </div>
+                        <div class="payment-method" onclick="selectPayment('upi')">
+                            <div class="payment-icon">📱</div>
+                            <div>UPI</div>
+                        </div>
+                        <div class="payment-method" onclick="selectPayment('netbanking')">
+                            <div class="payment-icon">🏦</div>
+                            <div>Net Banking</div>
+                        </div>
+                    </div>
+
+                    <div id="cardDetails" class="payment-details">
+                        <div class="form-group">
+                            <label>Card Number</label>
+                            <input type="text" placeholder="1234 5678 9012 3456" maxlength="19">
+                        </div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                            <div class="form-group">
+                                <label>Expiry Date</label>
+                                <input type="text" placeholder="MM/YY" maxlength="5">
+                            </div>
+                            <div class="form-group">
+                                <label>CVV</label>
+                                <input type="text" placeholder="123" maxlength="3">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="upiDetails" class="payment-details">
+                        <div class="form-group">
+                            <label>UPI ID</label>
+                            <input type="text" id="upiId" placeholder="yourname@upi">
+                        </div>
+                        <div class="form-group">
+                            <label>UPI PIN</label>
+                            <input type="password" id="upiPin" placeholder="Enter 4 or 6 digit UPI PIN" maxlength="6">
+                        </div>
+                    </div>
+
+                    <div id="netbankingDetails" class="payment-details">
+                        <div class="form-group">
+                            <label>Select Bank</label>
+                            <select id="bankSelect">
+                                <option value="">Choose your bank</option>
+                                <option value="SBI">State Bank of India</option>
+                                <option value="HDFC">HDFC Bank</option>
+                                <option value="ICICI">ICICI Bank</option>
+                                <option value="Axis">Axis Bank</option>
+                                <option value="PNB">Punjab National Bank</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Account Number</label>
+                            <input type="text" id="accountNumber" placeholder="Enter your account number" maxlength="16">
+                        </div>
+                        <div class="form-group">
+                            <label>Net Banking Password</label>
+                            <input type="password" id="netbankingPassword" placeholder="Enter your net banking password">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="summary-box">
+                    <div class="summary-item">
+                        <span>Service:</span>
+                        <span id="summaryService">-</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Account/Number:</span>
+                        <span id="summaryAccount">-</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Plan Amount:</span>
+                        <span id="summaryAmount">₹0</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Total Amount:</span>
+                        <span id="summaryTotal">₹0</span>
+                    </div>
+                </div>
+
+                <button class="btn" onclick="processRecharge()">Proceed to Pay</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="success-modal" id="successModal">
+        <div class="modal-content">
+            <div class="success-icon">✅</div>
+            <h2>Payment Successful!</h2>
+            <p>Your recharge has been completed successfully.</p>
+            <p><strong>Transaction ID:</strong> <span id="transactionId"></span></p>
+            <p><strong>Date & Time:</strong> <span id="transactionDateTime"></span></p>
+            <button class="btn" onclick="closeModal()">Done</button>
+        </div>
+    </div>
+</body>
+<script src="index.js"></script>
+</html>
